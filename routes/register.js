@@ -2,18 +2,16 @@ const express = require('express')
 const router = express.Router()
 const argon2 = require('argon2')
 const User = require('../models/user'); // Import the User model
-const checkNotAuthenticated  = require('./passportConfig');
-const  initialize = require('./passportConfig');
-
-
-// Initialize Passport
-initialize(passport);
+const {checkNotAuthenticated}  = require('../passportConfig');
+const  {initialize} = require('../passportConfig');
+const passport = require('passport')
 
 
 
 
 
-router.get('/',checkNotAuthenticated, (req,res)=>{
+
+router.get('/', checkNotAuthenticated,(req,res)=>{
     res.render('register')
 })
 

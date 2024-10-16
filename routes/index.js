@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const checkAuthenticated = require('../passportConfig')
+//const checkAuthenticated = require('../passportConfig')
 
 
 
 
-router.get('/',checkAuthenticated, (req,res) =>{
+router.get('/', (req,res) =>{
     res.render('index')
 })
 

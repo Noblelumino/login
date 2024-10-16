@@ -2,16 +2,15 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const User = require('../models/user'); // Import the User model
-const checkNotAuthenticated  = require('./passportConfig');
-const  initialize = require('./passportConfig');
+const {checkNotAuthenticated}  = require('../passportConfig');
+const  {initialize} = require('../passportConfig');
 
-// Initialize Passport
-initialize(passport);
+
 
 
 
 // Initialize Passport with the correct MongoDB query functions
-initializePassport(
+initialize(
     passport,
     async (email) => {
         return await User.findOne({ email: email });
@@ -26,7 +25,7 @@ router.get('/', checkNotAuthenticated, (req,res)=>{
 })
 //
 router.post('/', passport.authenticate('local',{
-    successRedirect: './',
+    successRedirect: 'dashboard',
     failureRedirect: 'login',
     failureFlash: true
 
